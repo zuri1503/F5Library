@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thư viện F5 - Quản trị</title>
+    <meta name="description" content="Hệ thống quản lý thư viện F5">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+<header class="site-header">
+    <div class="container header-container">
+        <a href="index.html" class="logo">
+            <img src="images/header/logo.png" alt="Ảnh logo">
+        </a>
+
+        <button id="menu-toggle" class="menu-toggle" aria-label="Mở menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <nav class="main-nav" id="main-nav" aria-label="Menu chính">
+            <ul class="nav-list"><li><a href="index.html">Trang chủ</a></li><li><a href="danhmuc.html">Danh mục</a></li><li><a href="tintuc.html">Tin tức</a></li><li><a href="lienhe.html">Liên hệ</a></li><li><a href="gioithieu.html">Giới thiệu</a></li></ul>
+        </nav>
+
+        <div class="header-actions">
+            <form class="search-form" id="header-search-form" action="danhmuc.html" method="get">
+                <input type="text" name="q" placeholder="Tìm sách, tác giả...">
+                <button type="submit" aria-label="Tìm kiếm">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+            <a href="giomuon.html" class="action-icon" aria-label="Giỏ mượn" title="Giỏ mượn">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="badge" id="cart-count">0</span>
+            </a>
+            <a href="dangnhap.html" class="action-icon" aria-label="Đăng nhập" title="Đăng nhập">
+                <i class="fa-solid fa-user"></i>
+            </a>
+        </div>
+    </div>
+</header>
+<main>
+    <div class="container">
+        <section class="section">
+            <h1 class="section-title">Quản trị hệ thống</h1>
+            <p class="section-subtitle">Quản lý sách, độc giả và phiếu mượn</p>
+
+            <div class="admin-stats">
+                <div class="stat-card">
+                    <div class="stat-card-icon"><i class="fa-solid fa-book"></i></div>
+                    <div class="stat-card-value">8</div>
+                    <div class="stat-card-label">Tổng số sách</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon"><i class="fa-solid fa-users"></i></div>
+                    <div class="stat-card-value">3</div>
+                    <div class="stat-card-label">Độc giả</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon"><i class="fa-solid fa-clipboard-list"></i></div>
+                    <div class="stat-card-value">3</div>
+                    <div class="stat-card-label">Phiếu mượn</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon"><i class="fa-solid fa-newspaper"></i></div>
+                    <div class="stat-card-value">3</div>
+                    <div class="stat-card-label">Tin tức</div>
+                </div>
+            </div>
+
+            <div class="admin-section">
+                <div class="admin-section-header">
+                    <h2><i class="fa-solid fa-book"></i> Quản lý sách</h2>
+                    <button id="btn-add-book" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Thêm sách</button>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr><th>ID</th><th>Ảnh</th><th>Tên sách</th><th>Tác giả</th><th>Thể loại</th><th>SL</th><th>Thao tác</th></tr>
+                    </thead>
+                    <tbody id="admin-books"></tbody>
+                </table>
+            </div>
+
+            <div class="admin-section">
+                <div class="admin-section-header">
+                    <h2><i class="fa-solid fa-users"></i> Quản lý độc giả</h2>
+                    <button id="btn-add-reader" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Thêm độc giả</button>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr><th>ID</th><th>Họ tên</th><th>Email</th><th>SDT</th><th>Ngày ĐK</th><th>Trạng thái</th><th>Thao tác</th></tr>
+                    </thead>
+                    <tbody id="admin-readers"></tbody>
+                </table>
+            </div>
+
+            <div class="admin-section">
+                <div class="admin-section-header">
+                    <h2><i class="fa-solid fa-clipboard-list"></i> Quản lý phiếu mượn</h2>
+                    <button id="btn-add-loan" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Thêm phiếu mượn</button>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr><th>ID</th><th>Độc giả</th><th>Sách</th><th>Ngày mượn</th><th>Hạn trả</th><th>Trạng thái</th><th>Thao tác</th></tr>
+                    </thead>
+                    <tbody id="admin-loans"></tbody>
+                </table>
+            </div>
+
+            <div class="admin-section">
+                <h2><i class="fa-solid fa-newspaper"></i> Quản lý tin tức</h2>
+                <table class="data-table">
+                    <thead>
+                        <tr><th>ID</th><th>Tiêu đề</th><th>Ngày</th><th>Tác giả</th><th>Thao tác</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>Ưu đãi gia hạn tháng 8</td><td>2026-08-10</td><td>Ban quản lý</td>
+                            <td><button class="btn btn-sm btn-primary"><i class="fa-solid fa-edit"></i></button>
+                                <button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button></td></tr>
+                        <tr><td>2</td><td>Top 10 sách nên đọc</td><td>2026-08-05</td><td>Thủ thư Hương</td>
+                            <td><button class="btn btn-sm btn-primary"><i class="fa-solid fa-edit"></i></button>
+                                <button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button></td></tr>
+                        <tr><td>3</td><td>200 sách mới cập nhật</td><td>2026-08-01</td><td>Ban quản lý</td>
+                            <td><button class="btn btn-sm btn-primary"><i class="fa-solid fa-edit"></i></button>
+                                <button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</main>
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>THƯ VIỆN F5</h3>
+                <p>Hệ thống quản lý thư viện hiện đại, giúp bạn tra cứu và mượn sách một cách nhanh chóng.</p>
+            </div>
+            <div class="footer-col">
+                <h3>VỀ CHÚNG TÔI</h3>
+                <ul>
+                    <li><a href="gioithieu.html">Giới thiệu</a></li>
+                    <li><a href="lienhe.html">Liên hệ</a></li>
+                    <li><a href="#">Chính sách</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>HỖ TRỢ</h3>
+                <ul>
+                    <li><a href="#">Hướng dẫn mượn</a></li>
+                    <li><a href="#">Câu hỏi thường gặp</a></li>
+                    <li><a href="admin.html">Quản trị</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>LIÊN HỆ</h3>
+                <ul>
+                    <li><i class="fa-solid fa-location-dot"></i> Đỗ Mười, Quận 12, TP.HCM</li>
+                    <li><i class="fa-solid fa-phone"></i> 0909 123 456</li>
+                    <li><i class="fa-solid fa-envelope"></i> lienhe@f5vungtau.vn</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Thư viện F5.</p>
+        </div>
+    </div>
+</footer>
+
+<button id="back-to-top" class="back-to-top" aria-label="Lên đầu trang">
+    <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
