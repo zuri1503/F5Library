@@ -393,7 +393,7 @@ function initAuthForms() {
             e.preventDefault();
             const email = loginForm.email.value.trim();
             const pass = loginForm.password.value;
-            if (!/^[\w.+-]+@[\w-]+\.[\w.-]+$/.test(email)) return alert('Email không h�p lệ!');
+            if (!/^[\w.+-]+@[\w-]+\.[\w.-]+$/.test(email)) return alert('Email không hợp lệ!');
             if (pass.length < 6) return alert('Mật khẩu phải ít nhất 6 ký tự!');
             // Tài khoản demo để test nhanh
             var user = null;
@@ -784,7 +784,7 @@ function submitReaderForm(e, id) {
     saveAdminReaders(readers);
     closeAdminModal();
     renderAdminReadersTable();
-    alert('�ã lưu độc giả!');
+    alert('Đã lưu độc giả!');
 }
 
 function toggleReaderStatus(id) {
